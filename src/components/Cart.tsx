@@ -2,75 +2,110 @@
 
 import { useCartStore } from "@/store/cartStore"
 import Image from "next/image"
-import Link from "next/link"
 import { motion } from "framer-motion"
 import { calculateDiscountPrice } from "@/utils/priceUtils"
 import { Trash2 } from "lucide-react"
+import { useState } from "react"
 
 
 export default function Cart() {
 
     const cart = useCartStore((state) => state.cart)
     const removeFromCart = useCartStore((state) => state.removeFromCart)
-    
-    const totalPrice = cart.reduce((sum, item) => {
-        const finalPrice = calculateDiscountPrice(item.price, item.discountPercentage);
-        return sum + (finalPrice * item.quantity);
+        const totalPrice = cart.reduce((sum, item) => {
+        return sum + (calculateDiscountPrice(item.price, item.discountPercentage) * item.quantity);
     }, 0);
 
+    const [selectedItems, setSelectedItems] = useState<number []>([])
+    const handleCartItem = (id: number) => {
+        setSelectedItems(prev =>
+        prev.includes(id)
+            ? prev.filter(item => item !== id)
+            : [...prev, id]
+        )
+    }
+
+    const updateQuantity = useCartStore((state) => state.updateQuantity)
+
+    const handleQuantityChange = (id: number, delta: number) => {
+        const item = cart.find(item => item.id === id)
+        if (item) {
+            updateQuantity(id, item.quantity + delta)
+        }
+    }
+
     return (
-        <motion.div
-            initial={{opacity:0, y:20}}
-            animate={{opacity:1, y:20}}
-            transition={{duration:0.7}}
-            className="flex flex-col justify-center items-center z-10 min-h-screen w-full"
-        >
-            <div className="w-full flex justify-center items-center m-2 border-b border-white border-dashed">
-                <h1 className="text-2xl font-bold font-mono text-transparent bg-clip-text bg-linear-30 from-emerald-400 to-blue-500 hover:active:text-shadow-2xs">Корзина</h1>
-                <Link href={"/"}>
-                    <p className="ml-4 text-white text-xl">&times;</p>
-                </Link>
-            </div>
-
-            <div className="flex flex-col items-center gap-3">
-                {
-                    cart.map((item) => {
-                        const itemPrice = calculateDiscountPrice(item.price, item.discountPercentage);
-                        return (
-                            <div
-                                key={item.id}
-                                className="flex justify-center items-center flex-col gap-2 font-bold font-mono text-transparent bg-clip-text bg-linear-30 from-emerald-400 to-blue-500 border hover:border-emerald-500/80 rounded-2xl p-2 "
-                            >
-                                <div className="relative">
-                                    <Image
-                                        width={128}
-                                        height={128}
-                                        src={item.thumbnail}
-                                        alt={item.title}
-                                    />
-                                    <button
-                                        onClick={() => removeFromCart(item.id)}
-                                        className="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-full p-1 transition-colors"
-                                    >
-                                        <Trash2 size={16} />
-                                    </button>
-                                </div>
-
-                                <div className="text-center">
-                                    <p>{item.title}</p>
-                                    <div>
-                                        <p>Price: ${itemPrice}</p>
-                                        <p>Count: {item.quantity}</p>
+        
+    <motion.div
+        initial={{opacity:0, y:20}}
+        animate={{opacity:1, y:20}}
+        transition={{duration:0.7}}
+        className="w-full min-h-screen flex relative"
+    >                
+        <div className="w-200 shrink-0 p-4 text-xl  font-bold">
+            <div className="grid grid-cols-1 gap-4 text-white">
+                <div className="text-white flex flex-wrap gap-4 m-2 w-auto h-auto justify-center">
+                    {
+                        cart.map((item) => {
+                            const finalPrice = calculateDiscountPrice(item.price, item.discountPercentage);
+                            return (
+                                <div 
+                                    key={item.id}
+                                    onChange={(e) => e.stopPropagation()}
+                                    onClick={() => handleCartItem(item.id)}
+                                    className={`flex w-full items-center h-auto mt-auto bg-[#101010] rounded-2xl cursor-pointer
+                                        ${selectedItems.includes(item.id) ? "bg-linear-30 from-emerald-400 to-blue-500" : ""}`}
+                                >
+                                    <div className="flex justify-start items-center w-full ">
+                                        <div className="flex justify-center items-center relative aspect-square p-2 m-2 ml-12 overflow-hidden rounded-xl bg-white/5">
+                                            <Image
+                                                width={125}
+                                                height={125}
+                                                src={item.thumbnail}
+                                                alt={item.title}
+                                                className="object-cover w-auto"
+                                            />
+                                        </div>
+                                        <div className="flex flex-col justify-center items-center w-full m-2 p-2">
+                                            <h2 className="line-clamp-1">{item.title}</h2>
+                                            <h2> price: ${finalPrice} <span className="text-gray-500 line-through text-base">${item.price}</span></h2>
+                                            <div className="flex items-center gap-2 mt-2">
+                                                <button 
+                                                    onClick={(e) => {
+                                                        e.stopPropagation()
+                                                        handleQuantityChange(item.id, -1)
+                                                    }}
+                                                    className="px-3 py-1 bg-white/10 rounded hover:bg-white/20"
+                                                >
+                                                    -
+                                                </button>
+                                                <span className="w-8 text-center">{item.quantity}</span>
+                                                <button 
+                                                    onClick={(e) => {
+                                                        e.stopPropagation()
+                                                        handleQuantityChange(item.id, 1)
+                                                    }}
+                                                    className="px-3 py-1 bg-white/10 rounded hover:bg-white/20"
+                                                >
+                                                    +
+                                                </button>
+                                            </div>
+                                            
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        )
-                    })
-                }
-                <div className="text-2xl font-bold font-mono text-transparent bg-clip-text bg-linear-30 from-emerald-400 to-blue-500">
-                    <p>Total price: ${totalPrice.toFixed(2)}</p>
+                            )
+                        })
+                    }
                 </div>
             </div>
-        </motion.div>
+        </div>
+
+        <div className="flex-1 border border-green-500 bg-[#101010] p-4">
+            <div className="text-white">
+                Основной контент справа
+            </div>
+        </div>
+    </motion.div>
     )
 }

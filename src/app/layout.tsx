@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
-import Hero from "@/components/Hero";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+
+import Hero from "@/components/Hero";
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 

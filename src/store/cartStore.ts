@@ -9,6 +9,7 @@ interface CartStore {
     cart: CartItem[];
     addToCart: (product: Products) => void;
     removeFromCart: (productId: number) => void;
+    updateQuantity: (productId: number, quantity: number) => void;
     clearCart: () => void;
 }
 
@@ -31,6 +32,14 @@ export const useCartStore = create<CartStore>((set) => ({
 
     removeFromCart: (productId) => set((state) => ({
         cart: state.cart.filter((item) => item.id !== productId)
+    })),
+
+    updateQuantity: (productId, quantity) => set((state) => ({
+        cart: state.cart.map((item) => 
+            item.id === productId 
+                ? { ...item, quantity: Math.max(1, quantity) } 
+                : item
+        )
     })),
 
     clearCart: () => set({ cart: [] })
