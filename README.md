@@ -1,6 +1,6 @@
 # Lite Shop 🛒
 
-**Live Demo:** [lite-shop-six.vercel.app]
+**Live Demo:** lite-shop-six.vercel.app
 
 ---
 
