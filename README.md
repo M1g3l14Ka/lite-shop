@@ -1,6 +1,6 @@
 # Lite Shop 🛒
 
-**Live Demo:** [lite-shop-demo.vercel.app](https://your-demo-link.vercel.app) *(add your deploy link)*
+**Live Demo:** [lite-shop-six.vercel.app]
 
 ---
 
