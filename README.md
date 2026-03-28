@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lite Shop 🛒
 
-## Getting Started
+**Live Demo:** [lite-shop-demo.vercel.app](https://your-demo-link.vercel.app) *(add your deploy link)*
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This is a minimalist online store with simulated purchases. I created it as a pet project to improve my skills in modern frontend development, state management, and API interactions. The essence is clear from its name — lightweight, fast, and focused on the shopping experience.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠 Tools & Tech Stack
 
-## Learn More
+- **Core** | Next.js 16, React 19, TypeScript |
+- **Styling** | Tailwind CSS v4, shadcn/ui |
+- **Animations** | Framer Motion |
+- **State Management** | Zustand (+ persist middleware) |
+- **API** | DummyJSON Products API |
+- **Utilities** | use-debounce |
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Hero Section:** Search bar with debounce (500ms), cart counter, navigation
+- **Main (Product Grid):** Responsive grid (2→3→4→5 columns), product cards with discount prices
+- **Cart Page:** Item selection, quantity control, order placement
+- **Footer:** FAQ accordion with project info and author links
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## What I Learned
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **State Management:** Mastered Zustand for cart and filter stores with localStorage persistence
+- **Performance:** Implemented debounced search, request timeouts (AbortController), and API response caching
+- **Responsive Design:** Built mobile-first adaptive layouts with Tailwind breakpoints
+- **Modern Patterns:** Server Components vs Client Components in Next.js 16 App Router
+- **Error Handling:** Proper try/catch, loading states, and user feedback
+
+---
+
+## Future Improvements
+
+- [ ] Add product categories and brand filters
+- [ ] Implement sorting (by price, rating, newest)
+- [ ] Replace `alert()` with toast notifications (react-hot-toast)
+- [ ] Add product detail pages `/product/[id]`
+- [ ] Write unit tests (Vitest + React Testing Library)
+- [ ] Add skeleton loaders for better UX
+- [ ] Implement pagination for large product lists
+
+---
+
+## How to Run Locally
+
+If you want to run this project on your machine:
+
+1. **Download the archive** with the project
+2. **Open the project** in your code editor (I use VS Code)
+3. **Install dependencies:**
+   ```bash
+   npm install
+4. Create .env.local file in the root directory:
+- NEXT_PUBLIC_API_URL="https://dummyjson.com/products"
+5. Start the dev server:
+- npm run dev
+6. Open http://localhost:3000 in your browser
