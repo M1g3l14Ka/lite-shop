@@ -6,6 +6,7 @@ import { motion } from "framer-motion"
 import { calculateDiscountPrice } from "@/utils/priceUtils"
 import { Trash2 } from "lucide-react"
 import { useState } from "react"
+import { toast } from 'react-hot-toast'
 
 
 export default function Cart() {
@@ -38,12 +39,12 @@ export default function Cart() {
     const handleClearItemsInOrder = () => {
         removeItemsInOrder(selectedItems)
         setSelectedItems([])
-        alert("You made an order!")
+        toast.success("You made an order!")
     }
 
     const handleClearCart = () => {
         clearCart();
-        alert('You cleaned your cart!')
+        toast.success('You cleaned your cart!')
     }
 
     const totalPrice = cart.filter(item => selectedItems.includes(item.id)).reduce((sum, item) => {return sum + (calculateDiscountPrice(item.price, item.discountPercentage) * item.quantity)}, 0)
@@ -56,7 +57,7 @@ export default function Cart() {
         transition={{duration:0.7}}
         className="w-full min-h-screen flex relative"
     >
-        <div className="w-200 shrink-0 p-2 text-xl font-bold bg-[#101010] m-2 rounded-2xl">
+        <div className="w-full lg:w-2/3 shrink-0 p-2 text-xl font-bold bg-[#101010] m-2 rounded-2xl">
             <div className="grid grid-cols-1 gap-4 text-white">
                 <div className="text-white flex flex-wrap gap-4 m-2 w-auto h-auto justify-center">
                     <h1 className="text-2xl font-bold font-mono">Your cart</h1>

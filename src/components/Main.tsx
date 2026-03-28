@@ -6,12 +6,23 @@ import { Products } from "@/types/types"
 import { useCartStore } from '@/store/cartStore'
 import Image from "next/image"
 import { calculateDiscountPrice } from '@/utils/priceUtils'
+import { useFilterStore } from "@/store/filterStore"
+import { useDebounce } from "use-debounce"
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL!;
 
 export default function Main() {
+
     const [productsData, setProductsData] = useState<Products[]>([])
     const [loadingData, setLoadingData] = useState(true)
     const [error, setError] = useState<string | null>(null)
+
+    const searchQuery = useFilterStore((state) => state.searchQuery)
+    const [debouncedSearchQuery] = useDebounce(searchQuery, 500)
+
+    const filterProducts = productsData.filter((prod) => {
+        return prod.title.toLocaleLowerCase().includes(debouncedSearchQuery.toLowerCase())
+    })
 
     const addToCart = useCartStore((state) => state.addToCart)
 
@@ -78,8 +89,8 @@ export default function Main() {
 
     return (
         <main className="p-4 max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
-                {productsData.map((prod: Products, index: number) => {
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+                {filterProducts.map((prod: Products, index: number) => {
                     const discountPrice = calculateDiscountPrice(prod.price, prod.discountPercentage)
 
                     return (
@@ -88,7 +99,7 @@ export default function Main() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
                             key={prod.id}
-                            className="flex flex-col bg-white/5 border border-white/10 rounded-2xl p-4 hover:border-emerald-500/50 transition-colors group hover:shadow-sm hover:shadow-white/40"
+                            className="flex flex-col justify-center items-center bg-white/5 border border-white/10 rounded-2xl p-4 hover:border-emerald-500/50 transition-colors group hover:shadow-sm hover:shadow-white/40"
                         >
                             <div className="relative aspect-square w-full mb-4 overflow-hidden rounded-xl bg-white/5">
                                 <Image
@@ -132,9 +143,9 @@ export default function Main() {
     )
 }
 
-// ← Вспомогательная функция (так как fetchProductsCache не принимает signal)
+
 async function fetchProductsCacheWithSignal(signal: AbortSignal): Promise<{ products: Products[] }> {
-    const response = await fetch('https://dummyjson.com/products', { signal })
+    const response = await fetch(API_URL, { signal })
     
     if (!response.ok) {
         if (response.status === 401) throw new Error('Unauthorized (401)')

@@ -11,7 +11,7 @@ export default function Footer() {
     const getCurrentYear = new Date().getFullYear();
 
     return(
-        <footer className="flex flex-col justify-center items-center max-w-7xl text-2xl h-screen mt-auto relative w-full">
+        <footer className="flex flex-col justify-center items-center max-w-7xl text-2xl min-h-screen relative w-full">
             <h1 className="text-6xl mb-12 text-transparent bg-clip-text bg-linear-to-r from-emerald-400 to-blue-500 font-bold font-mono">
                 Frequently Asked Questions 
             </h1>
@@ -41,7 +41,7 @@ export default function Footer() {
                                 Links: 
                                 <ul>
                                     <li><a href="https://github.com/M1g3l14Ka" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors w-fit">GitHub</a></li>
-                                    <li><a href="https://michael-resume.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors w-fit">Own Site</a></li>
+                                    <li><a href="https://www.michaelkasion.ru/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors w-fit">Own Site</a></li>
                                     <li><a href="https://t.me/M1g3L14Ka" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors w-fit">Telegram</a></li>
                                 </ul>
                             </h2>
