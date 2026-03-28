@@ -1,6 +1,6 @@
 # Hi there 👋
 
-## **Live Demo:** [https://lite-shop-six.vercel.app/](https://lite-shop-six.vercel.app/)
+## **Live Demo:** [https://www.shop.michaelkasion.ru/](https://www.shop.michaelkasion.ru/)
 
 ---
 
