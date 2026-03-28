@@ -34,7 +34,7 @@ export default function Hero() {
                             type="text" 
                             placeholder="What are u looking ?"
                             onChange={(e) => setFilterItem(e.target.value)}
-                            className="rounded-full w-2xl bg-[#050505] py-2 border border-white text-center text-transparent bg-clip-text bg-linear-to-r from-emerald-400 to-blue-500"
+                            className="rounded-full w-6xl bg-[#050505] py-2 border border-white text-center text-transparent bg-clip-text bg-linear-to-r from-emerald-400 to-blue-500"
                             onKeyDown={
                                 (e) => e.key === "Enter" 
                             }
@@ -44,13 +44,15 @@ export default function Hero() {
 
 
                 <div className="flex justify-around w-auto m-4 gap-12">
-                    <div className="flex text-lg gap-1 text-transparent bg-clip-text bg-linear-30 from-emerald-600 to-blue-500 hover:scale-110">
-                        <Link href={"/pages/cart"}>
-                            <p className="flex justify-center items-center w-24 h-12 text-white text-2xl font-bold font-mono bg-linear-120 from-emerald-600 to-blue-500 rounded-2xl hover:underline ">
-                                Cart
-                            </p>
-                        </Link>
-                        <span>{cart.length}</span>
+                    <div className="flex text-lg text-transparent bg-clip-text bg-linear-30 from-emerald-600 to-blue-500">
+                        <div>
+                            <Link href={"/pages/cart"}>
+                                <p className="flex justify-center items-center w-24 h-12 text-white text-2xl font-bold font-mono bg-linear-120 from-emerald-600 to-blue-500 rounded-2xl hover:underline hover:scale-110">
+                                    Cart
+                                </p>
+                            </Link>
+                        </div>
+                        <span className="ml-1 text-lg ">{cart.length}</span>
                     </div>
                 </div>
             </div>
