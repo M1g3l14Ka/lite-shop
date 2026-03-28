@@ -1,6 +1,6 @@
-# Lite Shop 🛒
+# Lite Shop 
 
-**Live Demo:** lite-shop-six.vercel.app
+## **Live Demo:** [https://www.michaelkasion.ru/](https://www.michaelkasion.ru/)
 
 ---
 
