@@ -1,8 +1,5 @@
-import Main from "@/components/Main";
+import Products from "@/components/Products";
 
-
-export default function ProductPage() {
-    return (
-        <Main/>
-    )
+export default function ProductsPage() {
+    return <Products />;
 }
