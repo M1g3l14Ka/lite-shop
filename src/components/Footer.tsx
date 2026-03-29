@@ -55,10 +55,11 @@ export default function Footer() {
                         What is the website written on
                     </AccordionTrigger>
                     <AccordionContent className="flex flex-col text-base sm:text-xl h-auto text-gray-500">
-                        <span>Core: TypeScript</span>
-                        <span>Framework: Next.js 16, React 19</span>
-                        <span>Styles & Animations: TailWind CSS v4, shadcn/ui, Framer-Motion</span>
-                        <span>API: Gemini API</span>
+                        <span>Core: Next.js 16, React 19, TypeScript</span>
+                        <span>Styles & Animations: Tailwind CSS v4, shadcn/ui, Framer Motion</span>
+                        <span>State Management: Zustand + persist middleware </span>
+                        <span>API: DummyJSON Products API</span>
+                        <span>Utilities: use-debounce</span>
                     </AccordionContent>
                 </AccordionItem>
             </Accordion>
