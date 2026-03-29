@@ -1,6 +1,6 @@
-# Lite Shop 🛒
+# Hi there 👋
 
-**Live Demo:** [lite-shop-demo.vercel.app](https://your-demo-link.vercel.app) *(add your deploy link)*
+## **Live Demo:** [https://www.shop.michaelkasion.ru/](https://www.shop.michaelkasion.ru/)
 
 ---
 
@@ -10,7 +10,7 @@ This is a minimalist online store with simulated purchases. I created it as a pe
 
 ---
 
-## 🛠 Tools & Tech Stack
+## 🛠️ Tools & Tech Stack
 
 - **Core** | Next.js 16, React 19, TypeScript |
 - **Styling** | Tailwind CSS v4, shadcn/ui |
@@ -21,7 +21,7 @@ This is a minimalist online store with simulated purchases. I created it as a pe
 
 ---
 
-## Structure
+## 🗂️ Structure
 
 - **Hero Section:** Search bar with debounce (500ms), cart counter, navigation
 - **Main (Product Grid):** Responsive grid (2→3→4→5 columns), product cards with discount prices
@@ -30,7 +30,7 @@ This is a minimalist online store with simulated purchases. I created it as a pe
 
 ---
 
-## What I Learned
+## 🤪 What I Learned
 
 - **State Management:** Mastered Zustand for cart and filter stores with localStorage persistence
 - **Performance:** Implemented debounced search, request timeouts (AbortController), and API response caching
@@ -40,7 +40,7 @@ This is a minimalist online store with simulated purchases. I created it as a pe
 
 ---
 
-## Future Improvements
+## 🤔 Future Improvements
 
 - [ ] Add product categories and brand filters
 - [ ] Implement sorting (by price, rating, newest)
@@ -52,7 +52,7 @@ This is a minimalist online store with simulated purchases. I created it as a pe
 
 ---
 
-## How to Run Locally
+## 🛜 How to Run Locally
 
 If you want to run this project on your machine:
 
