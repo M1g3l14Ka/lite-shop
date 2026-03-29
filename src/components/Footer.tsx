@@ -9,7 +9,7 @@ export default function Footer() {
     const getCurrentYear = new Date().getFullYear();
 
     return (
-        <footer className="flex flex-col justify-center items-center max-w-[100vw] text-2xl w-full px-4 sm:px-6 py-12 sm:py-16 relative">
+        <footer className="flex flex-col justify-center items-center text-2xl w-full px-4 sm:px-6 py-12 sm:py-16 relative">
             <h1 className="text-3xl sm:text-4xl md:text-6xl mb-8 sm:mb-12 text-transparent bg-clip-text bg-linear-to-r from-emerald-400 to-blue-500 font-bold font-mono text-center px-4">
                 Frequently Asked Questions
             </h1>

@@ -1,14 +1,14 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { Products } from "@/types/types";
+import { Product } from "@/types/types";
 
-export interface CartItem extends Products {
+export interface CartItem extends Product {
     quantity: number;
 }
 
 interface CartStore {
     cart: CartItem[];
-    addToCart: (product: Products) => void;
+    addToCart: (product: Product) => void;
     removeFromCart: (productId: number) => void;
     removeItemInOrder: (productId: number[]) => void;
     updateQuantity: (productId: number, quantity: number) => void;
@@ -57,7 +57,7 @@ export const useCartStore = create<CartStore>()(
             clearCart: () => set({ cart: [] })            
         }),
         {
-            name: 'cart-storage', // ключ для localStorage
+            name: 'cart-storage',
         }
     )
 );

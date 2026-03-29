@@ -60,7 +60,9 @@ export default function Cart() {
         <div className="w-full lg:w-2/3 shrink-0 p-2 text-xl font-bold bg-[#101010] m-2 rounded-2xl">
             <div className="grid grid-cols-1 gap-4 text-white">
                 <div className="text-white flex flex-wrap gap-4 m-2 w-auto h-auto justify-center">
-                    <h1 className="text-2xl font-bold font-mono">Your cart</h1>
+                    <div className="flex justify-start items-center w-full p-2">
+                        <h1 className="text-2xl font-bold font-mono">Your cart:</h1>
+                    </div>
                     {
                         cart.map((item) => {
                             const finalPrice = calculateDiscountPrice(item.price, item.discountPercentage);
@@ -69,10 +71,10 @@ export default function Cart() {
                                     key={item.id}
                                     onChange={(e) => e.stopPropagation()}
                                     onClick={() => handleCartItem(item.id)}
-                                    className={`flex w-full justify-between items-center h-auto mt-auto bg-[#202020] rounded-2xl cursor-pointer
+                                    className={`flex w-full items-center mt-auto bg-[#202020] rounded-2xl cursor-pointer
                                         ${selectedItems.includes(item.id) ? "bg-[#505050]" : ""}`}
                                 >
-                                    <div className="flex justify-start items-center w-full">
+                                    <div className="flex justify-start items-center w-full  m-2 p-2">
                                         <div className="flex justify-center items-center relative aspect-square p-2 m-2 ml-12 overflow-hidden rounded-xl bg-white/5">
                                             <Image
                                                 width={125}
@@ -83,7 +85,7 @@ export default function Cart() {
                                             />
                                         </div>
 
-                                        <div className="flex flex-col justify-center items-center w-full m-2 p-2">
+                                        <div className="flex flex-col justify-center items-center w-full">
                                             <h2 className="line-clamp-1">{item.title}</h2>
                                             <h2> price: ${finalPrice} <span className="text-gray-500 line-through text-base">${item.price}</span></h2>
                                             <div className="flex items-center gap-2 mt-2">
@@ -179,8 +181,9 @@ export default function Cart() {
                                     .map((item) => {
                                         const itemPrice = calculateDiscountPrice(item.price, item.discountPercentage);
                                         return (
-                                            <div key={item.id} className="flex justify-between items-center text-gray-300 border-b border-white/10 pb-2">
-                                                <span className="line-clamp-1 flex-1 pr-4">{item.title}<span> x{item.quantity}</span></span>
+                                            <div key={item.id} className="flex flex-wrap justify-between items-center gap-2 text-gray-300 border-b border-white/10 pb-2">
+                                                <span className="line-clamp-1 flex-[1_1_200px] pr-4">{item.title}</span>
+                                                <span className="text-gray-400">x{item.quantity}</span>
                                                 <span className="font-mono text-emerald-400">
                                                     ${(itemPrice * item.quantity).toFixed(2)}
                                                 </span>
