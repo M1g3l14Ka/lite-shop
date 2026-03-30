@@ -1,6 +1,6 @@
 # Hi there 👋
 
-## **Live Demo:** [https://www.shop.michaelkasion.ru/](https://www.shop.michaelkasion.ru/)
+## **Live Demo:** [https://shop.michaelkasion.ru/](https://shop.michaelkasion.ru/)
 
 ---
 
