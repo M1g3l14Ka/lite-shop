@@ -1,6 +1,6 @@
 # Hi there 👋
 
-## **Live Demo:** [https://www.shop.michaelkasion.ru/](https://www.shop.michaelkasion.ru/)
+## **Live Demo:** [https://shop.michaelkasion.ru/](https://shop.michaelkasion.ru/)
 
 ---
 
@@ -44,11 +44,7 @@ This is a minimalist online store with simulated purchases. I created it as a pe
 
 - [ ] Add product categories and brand filters
 - [ ] Implement sorting (by price, rating, newest)
-- [ ] Replace `alert()` with toast notifications (react-hot-toast)
-- [ ] Add product detail pages `/product/[id]`
 - [ ] Write unit tests (Vitest + React Testing Library)
-- [ ] Add skeleton loaders for better UX
-- [ ] Implement pagination for large product lists
 
 ---
 
