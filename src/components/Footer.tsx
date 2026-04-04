@@ -42,7 +42,7 @@ export default function Footer() {
                                 Links:
                                 <ul className="flex flex-col gap-2 mt-2">
                                     <li><a href="https://github.com/M1g3l14Ka" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors w-fit">GitHub</a></li>
-                                    <li><a href="https://www.michaelkasion.ru/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors w-fit">Own Site</a></li>
+                                    <li><a href="https://michaelkasion.ru/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors w-fit">Own Site</a></li>
                                     <li><a href="https://t.me/M1g3L14Ka" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors w-fit">Telegram</a></li>
                                 </ul>
                             </h2>
